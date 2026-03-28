@@ -12,6 +12,19 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+        background-color: white !important;
+        }
+        .bento-card { 
+           break-inside: avoid; 
+           border: 1px solid #eee !important;
+        box-shadow: none !important;
+        }
+        button, .animate-pulse { display: none !important; } /* On cache le bouton sur le PDF */
+        }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         body {
@@ -58,8 +71,8 @@
         <!-- HEADER -->
         <header class="flex justify-between items-center mb-8 px-2">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-accent-blue rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xs">RFM</span>
+                <div class="w-10 h-10 bg-accent-blue rounded-xl flex items-center justify-center shadow-sm">
+                    <span class="text-white font-black text-xs italic tracking-tighter" style="font-family: 'Inter', sans-serif;">RFM</span>
                 </div>
                 <span class="text-[10px] tracking-[0.2em] font-bold text-[#757575] uppercase">Profil Athlète 2026</span>
             </div>
