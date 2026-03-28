@@ -1,18 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <meta property="og:title" content="Ryan F. Morais | Sprinter U18">
+    <meta property="og:description" content="Profil athlétique officiel - ESRCAC Colmar. Objectif Regional 2026.">
+    <meta property="og:image" content="ryan-profil.jpg">
+    <meta name="theme-color" content="#1976D2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan F. Morais | U18 Sprinter Portfolio</title>
+    <!-- Tailwind CSS pour le layout et les utilitaires -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .bento-card {
+            will-change: transform, box-shadow;
+            backface-visibility: hidden;
+        }
+        button:hover {
+            letter-spacing: 0.25em;
+            background: linear-gradient(90deg, #212121, #1976D2);
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+        background-color: white !important;
+        }
+        .bento-card { 
+           break-inside: avoid; 
+           border: 1px solid #eee !important;
+        box-shadow: none !important;
+        }
+        button, .animate-pulse { display: none !important; } /* On cache le bouton sur le PDF */
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212121;
+        }
+
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden; /* Pour que les images ne dépassent pas des coins arrondis */
+        }
+
+        .bento-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .accent-blue { color: #1976D2; }
+        .bg-accent-blue { background-color: #1976D2; }
+        .accent-red { color: #D32F2F; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+        /* Style pour les médias vides avant ajout */
+        .media-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- HEADER -->
+        <header class="flex justify-between items-center mb-8 px-2">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-accent-blue rounded-xl flex items-center justify-center shadow-sm">
+                    <span class="text-white font-black text-xs italic tracking-tighter" style="font-family: 'Inter', sans-serif;">RFM</span>
+                </div>
+                <span class="text-[10px] tracking-[0.2em] font-bold text-[#757575] uppercase" data-i18n="header-profile">Profil Athlète 2026</span>
+                <span class="text-[10px] tracking-[0.2em] font-bold text-[#757575] uppercase">Profil Athlète 2026</span>
+            </div>
+            <div class="text-[10px] tracking-widest text-[#757575] font-medium uppercase" data-i18n="header-update">
+                Mis à jour : Mars 2026
+            </div>
+        </header>
+
+        <!-- BENTO GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-4" id="mainContent">
+            
+            <!-- BLOC A: IDENTITÉ (8 cols) -->
+            <div class="md:col-span-4 lg:col-span-8 bento-card p-8 flex flex-col md:flex-row items-center gap-8">
+                <div class="relative">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-100 overflow-hidden border-4 border-white shadow-sm flex items-center justify-center">
+                        <!-- ############################################################ -->
+                        <!-- IMAGE DE PROFIL : Remplace 'ryan-profil.jpg' par ton fichier -->
+                        <img src="ryan-profil.jpg" alt="Ryan F. Morais" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full media-placeholder flex items-center justify-center italic text-gray-400 text-[10px] text-center p-4">Ajoute 'ryan-profil.jpg' ici</div>
+                        <!-- ############################################################ -->
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-accent-blue p-2 rounded-full shadow-lg">
+                        <i data-lucide="zap" class="text-white w-5 h-5 fill-current"></i>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 uppercase italic">Ryan F. Morais</h1>
+                    <p class="text-[#757575] font-medium tracking-[0.15em] text-sm mb-4 uppercase" data-i18n="identity-desc">Sprinter U18 | Licence FFA en cours</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="px-4 py-1.5 bg-[#F8F9FA] border border-[#E0E0E0] rounded-full text-[10px] font-bold tracking-wider uppercase text-[#424242]">Spécialiste Sprint</span>
+                        <span class="px-4 py-1.5 bg-[#F8F9FA] border border-[#E0E0E0] rounded-full text-[10px] font-bold tracking-wider uppercase text-[#424242]">Espoir Élite</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC B: CLUB (4 cols) -->
+            <div class="md:col-span-4 bento-card p-8 flex flex-col items-center justify-center text-center">
+                <div class="mb-4 w-24 h-24 bg-white border border-[#F0F0F0] rounded-xl shadow-sm flex items-center justify-center overflow-hidden">
+                    <!-- ############################################################ -->
+                    <!-- LOGO DU CLUB : Remplace 'logo-club.png' par ton fichier -->
+                    <img src="logo-club.png" alt="ESRCAC Logo" class="max-w-full max-h-full object-contain p-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="hidden text-center">
+                        <div class="accent-blue font-black leading-none text-xl tracking-tighter uppercase">ESRCAC</div>
+                        <div class="accent-red font-bold text-[8px] tracking-[0.3em] uppercase">Colmar</div>
+                    </div>
+                    <!-- ############################################################ -->
+                </div>
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] mb-2 uppercase" data-i18n="club-title">Club Affilié</h3>
+                <p class="text-sm font-semibold mb-1">ESRCAC COLMAR</p>
+                <div class="flex items-center gap-1 text-[#757575]">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                    <span class="text-xs">Colmar, Grand Est, France</span>
+                </div>
+            </div>
+
+            <!-- BLOC C: VITESSE (3 cols) -->
+            <div class="md:col-span-4 lg:col-span-3 bento-card p-8 relative overflow-hidden group">
+                <i data-lucide="activity" class="absolute top-4 right-4 text-blue-500 opacity-10 group-hover:opacity-20 transition-opacity w-20 h-20"></i>
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="speed-title">Vitesse de Pointe</h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-7xl font-black accent-blue">37.1</span>
+                    <span class="text-xl font-bold uppercase">km/h</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#757575]" data-i18n="speed-strava">Strava Verified Data</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#757575]">Données Strava</span>
+                </div>
+                <p class="text-[11px] text-[#757575] mt-4 font-medium italic">Données Strava.</p>
+            </div>
+
+            <!-- BLOC D: PHYSIQUE (3 cols) -->
+            <div class="md:col-span-4 lg:col-span-3 bento-card p-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="physique-title">Métriques Corporelles</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="maximize-2" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Taille</span>
+                        </div>
+                        <span class="text-sm font-bold">178 cm</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="weight" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Poids</span>
+                        </div>
+                        <span class="text-sm font-bold">≈60 kg</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="ruler" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Envergure</span>
+                        </div>
+                        <span class="text-sm font-bold">178 cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC E: FONDATIONS (6 cols) -->
+            <div class="md:col-span-8 lg:col-span-6 bento-card p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-6" data-i18n="prep-title">Préparation Athlétique</h3>
+                    <p class="text-lg md:text-xl font-medium leading-relaxed">
+                        Construit sur <span class="accent-blue font-bold">4+ mois</span> de <span class="italic">Street Workout</span> intensif & Force Explosive.
+                    </p>
+                </div>
+                <div class="flex gap-4 mt-6">
+                    <div class="p-3 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0]">
+                        <i data-lucide="dumbbell" class="text-[#424242] w-6 h-6"></i>
+                    </div>
+                    <div class="p-3 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0]">
+                        <i data-lucide="flame" class="text-[#424242] w-6 h-6"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC F: ROADMAP (8 cols) -->
+            <div class="md:col-span-8 lg:col-span-8 bento-card p-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="roadmap-title">Roadmap Saison 2026</h3>
+                <div class="relative pl-8 border-l border-[#E0E0E0] space-y-12">
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[12px] h-[12px] rounded-full bg-accent-blue ring-4 ring-blue-100 animate-pulse"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1 accent-blue">Phase 1 : Maîtrise Technique</h4>
+                        <p class="text-[11px] font-bold text-accent-blue/80 uppercase tracking-tighter mb-1">[ En cours : Test ESRCAC ]</p>
+                        <p class="text-sm text-[#757575]">Optimisation des départs en blocks avec coach.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[10px] h-[10px] rounded-full bg-accent-red ring-4 ring-red-50"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1">Phase 2 : Seuil de Performance</h4>
+                        <p class="text-sm text-[#757575]">Objectif : Passer sous les 12.00s au 100m.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[10px] h-[10px] rounded-full bg-gray-300"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1 text-gray-400">Phase 3 : Ranking Régional</h4>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest italic">Qualification Championnats Regional U18 2026/2027.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC G: VIDÉO (4 cols) -->
+            <div class="md:col-span-4 bg-[#212121] rounded-[2rem] overflow-hidden relative group">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-30 pointer-events-none"></div>
+                
+                <!-- ############################################################ -->
+                <!-- VIDÉO DE DÉPART : Remplace 'video-start.mp4' par ton fichier -->
+                <!-- L'image 'poster-video.jpg' s'affiche avant que la vidéo ne charge -->
+                <video 
+                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                    poster="poster-video.jpg"
+                    loop muted playsinline id="startVideo">
+                    <source src="video-start.mp4" type="video/mp4">
+                    Ton navigateur ne supporte pas la vidéo.
+                </video>
+                <!-- ############################################################ -->
+                
+                <div class="absolute inset-0 z-40 flex flex-col items-center justify-center">
+                    <div onclick="toggleVideo()" class="group/btn w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/30 hover:scale-110 transition-all cursor-pointer shadow-2xl">
+                       <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover/btn:bg-accent-blue transition-colors">
+                          <i data-lucide="play" class="text-accent-blue group-hover:text-white fill-current ml-1 w-6 h-6" id="videoIcon"></i>
+                      </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 left-0 p-8 z-40">
+                    <h3 class="text-[10px] font-bold tracking-[0.2em] text-white/70 uppercase mb-2" data-i18n="video-title">Analyse Vidéo</h3>
+                        <h3 class="text-[10px] font-bold tracking-[0.2em] text-white/70 uppercase mb-2">Analyse Vidéo</h3>
+                    <p class="text-white font-bold text-sm italic italic">Départ en blocks (Slow-Mo)</p>
+                </div>
+            </div>
+
             <!-- BLOC H: TRACK DATA (8 cols) -->
             <div class="md:col-span-8 bento-card p-8">
-                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Records Personnels Officiels</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
-                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">60M</span>
-                        <span class="text-2xl font-black">--.--s</span>
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="records-title">Records Personnels Officiels</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center hover:border-accent-blue/30 transition-colors group">
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">60M</span>
+                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
-                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
-                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">100M</span>
-                        <span class="text-2xl font-black">--.--s</span>
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-accent-blue/20 text-center hover:border-accent-blue/40 transition-colors group relative">
+                        <div class="absolute top-2 right-3 text-[8px] font-bold text-accent-blue uppercase font-sans">Target</div>
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">100M</span>
+                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
-                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
-                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">200M</span>
-                        <span class="text-2xl font-black">--.--s</span>
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center hover:border-accent-blue/30 transition-colors group">
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">200M</span>
+                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
                 </div>
                 <div class="mt-8 flex items-center gap-2 text-[#757575] border-t border-[#F0F0F0] pt-6">
@@ -20,3 +278,119 @@
                     <p class="text-[10px] font-bold uppercase tracking-widest italic uppercase">Données 2026 en attente de validation FFA</p>
                 </div>
             </div>
+
+            <!-- BLOC I: CONTACT (4 cols) -->
+            <div class="md:col-span-4 bento-card p-8 flex flex-col justify-between">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="contact-title">Contact Professionnel</h3>
+                <div class="space-y-4 mb-8">
+                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-3 group transition-transform hover:translate-x-1">
+                        <div class="p-2 bg-blue-50 rounded-lg group-hover:bg-accent-blue transition-colors">
+                            <i data-lucide="mail" class="w-4 h-4 accent-blue group-hover:text-white"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-[#424242] group-hover:accent-blue overflow-hidden text-ellipsis">contact.rfmoraes@gmail.com</span>
+                    </a>
+                    <a href="https://instagram.com/ryan.frm_sprint" target="_blank" class="flex items-center justify-between p-4 bg-red-50/50 rounded-2xl group transition-all hover:bg-accent-red">
+                       <div class="flex items-center gap-3">
+                            <i data-lucide="instagram" class="w-5 h-5 accent-red group-hover:text-white"></i>
+                           <span class="text-xs font-bold text-[#424242] group-hover:text-white uppercase tracking-widest">Suivre l'évolution</span>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-accent-red group-hover:text-white"></i>
+                    </a>
+                    <a href="https://wa.me/33768230244" class="flex items-center gap-3 group transition-transform hover:translate-x-1 mt-4">
+                        <div class="p-2 bg-green-50 rounded-lg group-hover:bg-green-500 transition-colors">
+                            <i data-lucide="phone" class="w-4 h-4 text-green-600 group-hover:text-white"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-[#424242] group-hover:text-green-600">WhatsApp Direct</span>
+                    </a>
+                </div>
+                <div class="mb-6 p-4 bg-gray-50 rounded-2xl border-l-4 border-accent-blue">
+                    <p class="text-[10px] font-bold text-[#757575] uppercase mb-1">Disponibilité 2026</p>
+                    <p class="text-xs font-medium italic text-[#424242]">Ouvert aux détections régionales et meetings interclubs.</p>
+                </div>
+                <button onclick="window.print()" class="w-full py-4 bg-[#212121] text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-all font-bold text-xs tracking-widest uppercase shadow-lg shadow-gray-200 group">
+                    <i data-lucide="download" class="w-4 h-4 group-hover:animate-bounce"></i>
+                    Exporter CV (PDF)
+                </button>
+            </div>
+
+            <!-- BLOC J: SPONSORS & PARTENAIRES (4 cols) -->
+            <div class="md:col-span-4 bento-card p-8 flex flex-col justify-between" style="background: linear-gradient(135deg, #f8fafc 60%, #e3e7ef 100%); border: 1.5px solid #dbeafe; box-shadow: 0 4px 24px -8px #b6c3e6;">
+                <h3 class="text-xs font-extrabold tracking-[0.15em] text-[#2a3656] uppercase mb-7 flex items-center gap-2" style="letter-spacing:0.12em;" data-i18n="sponsor-title">
+                    <i data-lucide="handshake" class="w-4 h-4 text-[#6b7bb6]"></i>
+                    Sponsors & Partenaires
+                </h3>
+                <div class="mb-5">
+                    <p class="text-[13px] text-[#2a3656] font-semibold mb-2 tracking-tight">Vous souhaitez soutenir un jeune sprinter prometteur&nbsp;?</p>
+                    <ul class="list-disc pl-5 text-[11px] text-[#3b4666] space-y-1 tracking-tight">
+                        <li>Visibilité sur équipements, réseaux & événements</li>
+                        <li>Partenariats personnalisés (local, régional, national)</li>
+                        <li>Collaboration pour projets sportifs ou éducatifs</li>
+                    </ul>
+                </div>
+                <div class="mb-4 p-3 rounded-xl border-l-4" style="background:rgba(230,236,255,0.7); border-color:#b6c3e6;">
+                    <p class="text-[10px] font-bold text-[#2a3656] uppercase mb-1 tracking-widest">Contact dédié</p>
+                    <a href="mailto:contact.rfmoraes@gmail.com" class="text-xs font-medium text-[#2a3656] underline hover:text-[#1976D2] tracking-tight">contact.rfmoraes@gmail.com</a>
+                </div>
+                <div class="flex gap-2 mt-2">
+                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-2 px-4 py-2" style="background:linear-gradient(90deg,#b6c3e6 0%,#1976D2 100%); color:#fff; font-weight:700; border-radius:9999px; font-size:11px; text-transform:uppercase; box-shadow:0 2px 8px -2px #b6c3e6; letter-spacing:0.13em;">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Proposer un partenariat
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="mt-12 text-center pb-8">
+            <p class="text-[10px] font-bold tracking-[0.4em] text-[#BDBDBD] uppercase italic leading-loose" data-i18n="footer-text">
+                Performance Sprint — Design for Velocity — Ryan F. Morais © 2026
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
+
+        // Gestion de la vidéo
+        function toggleVideo() {
+            const video = document.getElementById('startVideo');
+            const icon = document.getElementById('videoIcon');
+            
+            if (video.paused) {
+                video.play();
+                // Change l'icône en pause (optionnel, nécessite de ré-exécuter lucide.createIcons si on change l'attribut)
+            } else {
+                video.pause();
+            }
+        }
+
+        // Animation du compteur de vitesse
+        const speedElement = document.querySelector('.text-7xl'); // Cible ton 37.1
+        let targetSpeed = 37.1;
+        let currentSpeed = 0;
+
+        const interval = setInterval(() => {
+            if (currentSpeed >= targetSpeed) {
+                clearInterval(interval);
+            } else {
+                currentSpeed += 0.5;
+                speedElement.innerText = currentSpeed.toFixed(1);
+            }
+        }, 20);
+
+        // Animation d'entrée au défilement
+        document.querySelectorAll('.bento-card, [class*="bg-[#212121]"]').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 80 * index);
+        });
+        
+    </script>
+</body>
+</html>
