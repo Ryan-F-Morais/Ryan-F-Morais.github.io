@@ -20,6 +20,19 @@
             will-change: transform, box-shadow;
             backface-visibility: hidden;
         }
+        .glass {
+            background: rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10) !important;
+            backdrop-filter: blur(12px) saturate(1.2);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+            border-radius: 2rem;
+            transition: box-shadow 0.3s, background 0.3s;
+        }
+        .glass:hover {
+            box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.18) !important;
+            background: rgba(255,255,255,0.45) !important;
+        }
         button:hover {
             letter-spacing: 0.25em;
             background: linear-gradient(90deg, #212121, #1976D2);
@@ -49,8 +62,11 @@
             background: #FFFFFF;
             border: 1px solid #E0E0E0;
             border-radius: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
             overflow: hidden; /* Pour que les images ne dépassent pas des coins arrondis */
+        }
+        .bento-card:hover {
+            border-color: #1976D2 !important;
         }
 
         .bento-card:hover {
@@ -97,7 +113,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-4" id="mainContent">
             
             <!-- BLOC A: IDENTITÉ (8 cols) -->
-            <div class="md:col-span-4 lg:col-span-8 bento-card p-8 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:col-span-4 lg:col-span-8 bento-card glass p-8 flex flex-col md:flex-row items-center gap-8">
                 <div class="relative">
                     <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-100 overflow-hidden border-4 border-white shadow-sm flex items-center justify-center">
                         <!-- ############################################################ -->
@@ -121,7 +137,7 @@
             </div>
 
             <!-- BLOC B: CLUB (4 cols) -->
-            <div class="md:col-span-4 bento-card p-8 flex flex-col items-center justify-center text-center">
+            <div class="md:col-span-4 bento-card glass p-8 flex flex-col items-center justify-center text-center">
                 <div class="mb-4 w-24 h-24 bg-white border border-[#F0F0F0] rounded-xl shadow-sm flex items-center justify-center overflow-hidden">
                     <!-- ############################################################ -->
                     <!-- LOGO DU CLUB : Remplace 'logo-club.png' par ton fichier -->
@@ -141,12 +157,15 @@
             </div>
 
             <!-- BLOC C: VITESSE (3 cols) -->
-            <div class="md:col-span-4 lg:col-span-3 bento-card p-8 relative overflow-hidden group">
+            <div class="md:col-span-4 lg:col-span-3 bento-card glass p-8 relative overflow-hidden group">
                 <i data-lucide="activity" class="absolute top-4 right-4 text-blue-500 opacity-10 group-hover:opacity-20 transition-opacity w-20 h-20"></i>
                 <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8" data-i18n="speed-title">Vitesse de Pointe</h3>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-7xl font-black accent-blue">37.1</span>
-                    <span class="text-xl font-bold uppercase">km/h</span>
+                <div class="flex flex-col items-start mb-2">
+                    <span class="inline-block px-3 py-0.5 mb-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full tracking-widest uppercase shadow-sm" style="letter-spacing:0.13em;">TOP SPEED</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-7xl font-black accent-blue">37.1</span>
+                        <span class="text-xl font-bold uppercase">km/h</span>
+                    </div>
                 </div>
                 <div class="flex items-center gap-1.5 mt-2">
                     <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -261,16 +280,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
                     <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center hover:border-accent-blue/30 transition-colors group">
                         <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">60M</span>
-                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
+                        <span class="text-2xl font-black text-gray-400 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
                     <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-accent-blue/20 text-center hover:border-accent-blue/40 transition-colors group relative">
                         <div class="absolute top-2 right-3 text-[8px] font-bold text-accent-blue uppercase font-sans">Target</div>
                         <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">100M</span>
-                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
+                        <span class="text-2xl font-black text-gray-400 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
                     <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center hover:border-accent-blue/30 transition-colors group">
                         <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block font-sans">200M</span>
-                        <span class="text-2xl font-black text-gray-300 group-hover:text-accent-blue transition-colors">--.--s</span>
+                        <span class="text-2xl font-black text-gray-400 group-hover:text-accent-blue transition-colors">--.--s</span>
                     </div>
                 </div>
                 <div class="mt-8 flex items-center gap-2 text-[#757575] border-t border-[#F0F0F0] pt-6">
@@ -314,7 +333,7 @@
             </div>
 
             <!-- BLOC J: SPONSORS & PARTENAIRES (4 cols) -->
-            <div class="md:col-span-4 bento-card p-8 flex flex-col justify-between" style="background: linear-gradient(135deg, #f8fafc 60%, #e3e7ef 100%); border: 1.5px solid #dbeafe; box-shadow: 0 4px 24px -8px #b6c3e6;">
+            <div class="md:col-span-4 bento-card glass p-8 flex flex-col justify-between" style="background: linear-gradient(135deg, #f8fafc 60%, #e3e7ef 100%); border: 1.5px solid #dbeafe; box-shadow: 0 4px 24px -8px #b6c3e6;">
                 <h3 class="text-xs font-extrabold tracking-[0.15em] text-[#2a3656] uppercase mb-7 flex items-center gap-2" style="letter-spacing:0.12em;" data-i18n="sponsor-title">
                     <i data-lucide="handshake" class="w-4 h-4 text-[#6b7bb6]"></i>
                     Sponsors & Partenaires
@@ -368,11 +387,13 @@
 
         // Animation du compteur de vitesse
         const speedElement = document.querySelector('.text-7xl'); // Cible ton 37.1
-        let targetSpeed = 37.1;
+        const targetSpeed = 37.1;
         let currentSpeed = 0;
 
         const interval = setInterval(() => {
-            if (currentSpeed >= targetSpeed) {
+            if (currentSpeed + 0.5 >= targetSpeed) {
+                currentSpeed = targetSpeed;
+                speedElement.innerText = currentSpeed.toFixed(1);
                 clearInterval(interval);
             } else {
                 currentSpeed += 0.5;
