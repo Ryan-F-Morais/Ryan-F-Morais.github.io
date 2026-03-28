@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     <meta property="og:title" content="Ryan F. Morais | Sprinter U18">
     <meta property="og:description" content="Profil athlétique officiel - ESRCAC Colmar. Objectif National 2026.">
@@ -13,6 +15,10 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        .bento-card {
+            will-change: transform, box-shadow;
+            backface-visibility: hidden;
+        }
         button:hover {
             letter-spacing: 0.25em;
             background: linear-gradient(90deg, #212121, #1976D2);
@@ -234,9 +240,9 @@
                 <!-- ############################################################ -->
                 
                 <div class="absolute inset-0 z-40 flex flex-col items-center justify-center">
-                    <div onclick="toggleVideo()" class="group/btn w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 hover:bg-accent-blue/40 transition-all cursor-pointer">
-                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl group-hover/btn:scale-90 transition-transform">
-                          <i data-lucide="play" class="text-accent-blue fill-current ml-1 w-6 h-6" id="videoIcon"></i>
+                    <div onclick="toggleVideo()" class="group/btn w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/30 hover:scale-110 transition-all cursor-pointer shadow-2xl">
+                       <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover/btn:bg-accent-blue transition-colors">
+                          <i data-lucide="play" class="text-accent-blue group-hover:text-white fill-current ml-1 w-6 h-6" id="videoIcon"></i>
                       </div>
                     </div>
                 </div>
