@@ -22,6 +22,7 @@
             border: 1px solid #E0E0E0;
             border-radius: 2rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden; /* Pour que les images ne dépassent pas des coins arrondis */
         }
 
         .bento-card:hover {
@@ -38,6 +39,14 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+        /* Style pour les médias vides avant ajout */
+        .media-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -63,8 +72,11 @@
             <div class="md:col-span-4 lg:col-span-8 bento-card p-8 flex flex-col md:flex-row items-center gap-8">
                 <div class="relative">
                     <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-100 overflow-hidden border-4 border-white shadow-sm flex items-center justify-center">
-                        <!-- Placeholder Image -->
-                        <i data-lucide="user" class="w-16 h-16 text-gray-300"></i>
+                        <!-- ############################################################ -->
+                        <!-- IMAGE DE PROFIL : Remplace 'ryan-profil.jpg' par ton fichier -->
+                        <img src="ryan-profil.jpg" alt="Ryan F. Morais" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full media-placeholder flex items-center justify-center italic text-gray-400 text-[10px] text-center p-4">Ajoute 'ryan-profil.jpg' ici</div>
+                        <!-- ############################################################ -->
                     </div>
                     <div class="absolute -bottom-2 -right-2 bg-accent-blue p-2 rounded-full shadow-lg">
                         <i data-lucide="zap" class="text-white w-5 h-5 fill-current"></i>
@@ -82,11 +94,15 @@
 
             <!-- BLOC B: CLUB (4 cols) -->
             <div class="md:col-span-4 bento-card p-8 flex flex-col items-center justify-center text-center">
-                <div class="mb-4 w-20 h-20 bg-white border border-[#F0F0F0] rounded-xl shadow-sm flex items-center justify-center p-2">
-                    <div class="text-center">
+                <div class="mb-4 w-24 h-24 bg-white border border-[#F0F0F0] rounded-xl shadow-sm flex items-center justify-center overflow-hidden">
+                    <!-- ############################################################ -->
+                    <!-- LOGO DU CLUB : Remplace 'logo-club.png' par ton fichier -->
+                    <img src="logo-club.png" alt="ESRCAC Logo" class="max-w-full max-h-full object-contain p-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="hidden text-center">
                         <div class="accent-blue font-black leading-none text-xl tracking-tighter uppercase">ESRCAC</div>
                         <div class="accent-red font-bold text-[8px] tracking-[0.3em] uppercase">Colmar</div>
                     </div>
+                    <!-- ############################################################ -->
                 </div>
                 <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] mb-2 uppercase">Club Affilié</h3>
                 <p class="text-sm font-semibold mb-1">ESRCAC COLMAR</p>
@@ -103,6 +119,10 @@
                 <div class="flex items-baseline gap-2">
                     <span class="text-7xl font-black accent-blue">37</span>
                     <span class="text-xl font-bold uppercase">km/h</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#757575]">Verified Top Speed</span>
                 </div>
                 <p class="text-[11px] text-[#757575] mt-4 font-medium italic">Données GPS haute précision vérifiées en séance.</p>
             </div>
@@ -177,16 +197,26 @@
 
             <!-- BLOC G: VIDÉO (4 cols) -->
             <div class="md:col-span-4 bg-[#212121] rounded-[2rem] overflow-hidden relative group">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                <!-- Image de fond simulée -->
-                <div class="absolute inset-0 bg-gray-800 opacity-60 group-hover:scale-105 transition-transform duration-700 bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=1000&auto=format&fit=crop');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-30 pointer-events-none"></div>
                 
-                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center">
-                    <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform cursor-pointer">
-                        <i data-lucide="play" class="text-white fill-current ml-1 w-6 h-6"></i>
+                <!-- ############################################################ -->
+                <!-- VIDÉO DE DÉPART : Remplace 'video-start.mp4' par ton fichier -->
+                <!-- L'image 'poster-video.jpg' s'affiche avant que la vidéo ne charge -->
+                <video 
+                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                    poster="poster-video.jpg"
+                    loop muted playsinline id="startVideo">
+                    <source src="video-start.mp4" type="video/mp4">
+                    Ton navigateur ne supporte pas la vidéo.
+                </video>
+                <!-- ############################################################ -->
+                
+                <div class="absolute inset-0 z-40 flex flex-col items-center justify-center">
+                    <div onclick="toggleVideo()" class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform cursor-pointer">
+                        <i data-lucide="play" class="text-white fill-current ml-1 w-6 h-6" id="videoIcon"></i>
                     </div>
                 </div>
-                <div class="absolute bottom-0 left-0 p-8 z-20">
+                <div class="absolute bottom-0 left-0 p-8 z-40">
                     <h3 class="text-[10px] font-bold tracking-[0.2em] text-white/70 uppercase mb-2">Analyse Vidéo</h3>
                     <p class="text-white font-bold text-sm italic italic">Départ en blocks (Slow-Mo)</p>
                 </div>
@@ -219,22 +249,22 @@
             <div class="md:col-span-4 bento-card p-8 flex flex-col justify-between">
                 <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Contact Professionnel</h3>
                 <div class="space-y-4 mb-8">
-                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-3 group">
+                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-3 group transition-transform hover:translate-x-1">
                         <div class="p-2 bg-blue-50 rounded-lg group-hover:bg-accent-blue transition-colors">
                             <i data-lucide="mail" class="w-4 h-4 accent-blue group-hover:text-white"></i>
                         </div>
                         <span class="text-xs font-semibold text-[#424242] group-hover:accent-blue overflow-hidden text-ellipsis">contact.rfmoraes@gmail.com</span>
                     </a>
-                    <a href="https://instagram.com/ryan.frm_sprint" target="_blank" class="flex items-center gap-3 group">
+                    <a href="https://instagram.com/ryan.frm_sprint" target="_blank" class="flex items-center gap-3 group transition-transform hover:translate-x-1">
                         <div class="p-2 bg-red-50 rounded-lg group-hover:bg-accent-red transition-colors">
                             <i data-lucide="instagram" class="w-4 h-4 accent-red group-hover:text-white"></i>
                         </div>
                         <span class="text-xs font-semibold text-[#424242] group-hover:accent-red">@ryan.frm_sprint</span>
                     </a>
                 </div>
-                <button onclick="window.print()" class="w-full py-4 bg-[#212121] text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-colors font-bold text-xs tracking-widest uppercase shadow-lg shadow-gray-200">
-                    <i data-lucide="file-text" class="w-4 h-4"></i>
-                    Télécharger CV Complet
+                <button onclick="window.print()" class="w-full py-4 bg-[#212121] text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-all font-bold text-xs tracking-widest uppercase shadow-lg shadow-gray-200 group">
+                    <i data-lucide="download" class="w-4 h-4 group-hover:animate-bounce"></i>
+                    Exporter Athlete CV (PDF)
                 </button>
             </div>
 
@@ -252,15 +282,28 @@
         // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Animation d'entrée au défilement (optionnel)
-        document.querySelectorAll('.bento-card').forEach((card, index) => {
+        // Gestion de la vidéo
+        function toggleVideo() {
+            const video = document.getElementById('startVideo');
+            const icon = document.getElementById('videoIcon');
+            
+            if (video.paused) {
+                video.play();
+                // Change l'icône en pause (optionnel, nécessite de ré-exécuter lucide.createIcons si on change l'attribut)
+            } else {
+                video.pause();
+            }
+        }
+
+        // Animation d'entrée au défilement
+        document.querySelectorAll('.bento-card, [class*="bg-[#212121]"]').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             setTimeout(() => {
                 card.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
-            }, 100 * index);
+            }, 80 * index);
         });
     </script>
 </body>
