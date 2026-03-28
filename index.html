@@ -3,385 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RYAN F. MORAIS | PERFORMANCE DATA | U18 SPRINTER</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-    
-    <!-- Scripts -->
+    <title>Ryan F. Morais | U18 Sprinter Portfolio</title>
+    <!-- Tailwind CSS pour le layout et les utilitaires -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        black: '#000000',
-                        white: '#FFFFFF',
-                        tartan: '#D40000', 
-                        darkgrey: '#080808',
-                        linegrey: '#121212',
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        html { scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         body {
-            background-color: #000000;
-            color: #FFFFFF;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212121;
         }
 
-        .text-precision-gradient {
-            background: linear-gradient(to right, #D40000, #FFFFFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-blur {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
+        .bento-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
 
-        .reveal-up { opacity: 0; transform: translateY(30px); }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 2px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #D40000; }
-
-        .lang-node { display: none; }
-        .lang-active { display: block; }
+        .accent-blue { color: #1976D2; }
+        .bg-accent-blue { background-color: #1976D2; }
+        .accent-red { color: #D32F2F; }
         
-        .stat-card {
-            border: 1px solid #121212;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            background: #080808;
-        }
-        .stat-card:hover { 
-            border-color: #D40000; 
-            background: #0A0000;
-            transform: translateY(-5px);
-        }
-
-        /* Roadmap Line */
-        .roadmap-line {
-            position: absolute;
-            left: 11px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: #121212;
-        }
-
-        /* TABLE FIX: Force grid and clear alignment */
-        .record-table-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #121212;
-            text-align: center;
-        }
-
-        .record-table-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            padding: 2rem;
-            border-bottom: 1px solid #121212;
-            align-items: center;
-            text-align: center;
-            transition: background 0.3s ease;
-        }
-        
-        .record-table-row:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .record-table-row div:first-child, .record-table-header div:first-child {
-            text-align: left;
-        }
-
-        .record-table-row div:last-child, .record-table-header div:last-child {
-            text-align: right;
-        }
-
-        .icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .hero-vignette {
-            background: radial-gradient(circle at center, transparent 0%, black 95%);
-        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
     </style>
 </head>
-<body class="font-sans">
+<body class="p-4 md:p-8">
 
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 w-full z-[100] border-b border-linegrey nav-blur">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="font-montserrat font-black tracking-tighter text-xl flex items-center gap-3">
-                <span class="w-2 h-8 bg-tartan"></span> 
-                <span class="hidden sm:inline uppercase">RYAN F. MORAIS</span>
-                <span class="sm:hidden">R.F.M</span>
+    <div class="max-w-6xl mx-auto">
+        <!-- HEADER -->
+        <header class="flex justify-between items-center mb-8 px-2">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-accent-blue rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xs">RFM</span>
+                </div>
+                <span class="text-[10px] tracking-[0.2em] font-bold text-[#757575] uppercase">Profil Athlète 2026</span>
             </div>
+            <div class="text-[10px] tracking-widest text-[#757575] font-medium uppercase">
+                Mis à jour : Mars 2026
+            </div>
+        </header>
+
+        <!-- BENTO GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-4">
             
-            <div class="hidden md:flex gap-10 text-[10px] font-bold tracking-[0.4em] uppercase opacity-50">
-                <a href="#hero" class="hover:text-tartan transition-colors hover:opacity-100">[ID]</a>
-                <a href="#specs" class="hover:text-tartan transition-colors hover:opacity-100">[SPECS]</a>
-                <a href="#roadmap" class="hover:text-tartan transition-colors hover:opacity-100">[ROADMAP]</a>
-                <a href="#records" class="hover:text-tartan transition-colors hover:opacity-100">[DATA]</a>
-                <a href="#contact" class="hover:text-tartan transition-colors hover:opacity-100">[CONTACT]</a>
-            </div>
-
-            <button onclick="toggleLanguage()" class="border border-white/10 px-4 py-2 text-[10px] font-black tracking-widest hover:border-tartan transition-all flex items-center gap-2">
-                <i data-lucide="languages" class="w-3 h-3"></i>
-                <span id="lang-label">FR</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section id="hero" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="https://images.unsplash.com/photo-1599058917232-d750c1859d7c?q=80&w=2070&auto=format&fit=crop" 
-                alt="Sprinter Focus" 
-                class="w-full h-full object-cover grayscale contrast-125 brightness-[0.2]"
-            />
-            <div class="absolute inset-0 hero-vignette"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-6 max-w-5xl">
-            <p class="font-inter text-[10px] tracking-[0.8em] text-tartan font-black mb-8 uppercase reveal-up">Power to Velocity</p>
-            <h1 class="font-montserrat text-5xl md:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] mb-10 reveal-up">
-                Ryan F.<br/><span class="text-precision-gradient">Morais</span>
-            </h1>
-            
-            <div class="space-y-6 reveal-up">
-                <h2 class="font-inter text-sm md:text-lg tracking-[0.4em] opacity-80 uppercase">
-                    <span class="font-light">U18 Sprinter</span> <span class="font-black">ESRCAC Colmar</span>
-                </h2>
-                <div class="h-[1px] w-24 bg-tartan mx-auto"></div>
-                <p class="text-[12px] md:text-sm tracking-[0.2em] text-gray-500 uppercase max-w-xl mx-auto en">Mechanical precision & explosive conditioning.</p>
-                <p class="text-[12px] md:text-sm tracking-[0.2em] text-gray-500 uppercase max-w-xl mx-auto fr lang-node">Précision mécanique et conditionnement explosif.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SPECS -->
-    <section id="specs" class="py-32 bg-black border-y border-linegrey">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-20 text-center reveal-up">
-                <h2 class="font-montserrat text-3xl font-black uppercase mb-4 en">Biomechanical Specs</h2>
-                <h2 class="font-montserrat text-3xl font-black uppercase mb-4 fr lang-node">Données Biomécaniques</h2>
-                <div class="w-12 h-1 bg-tartan mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="stat-card p-10 reveal-up">
-                    <i data-lucide="ruler" class="w-4 h-4 text-tartan mb-6"></i>
-                    <p class="font-montserrat text-5xl font-black mb-2">178<span class="text-tartan text-lg ml-1">cm</span></p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest en">Stature</p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest fr lang-node">Taille</p>
+            <!-- BLOC A: IDENTITÉ (8 cols) -->
+            <div class="md:col-span-4 lg:col-span-8 bento-card p-8 flex flex-col md:flex-row items-center gap-8">
+                <div class="relative">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-100 overflow-hidden border-4 border-white shadow-sm flex items-center justify-center">
+                        <!-- Placeholder Image -->
+                        <i data-lucide="user" class="w-16 h-16 text-gray-300"></i>
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-accent-blue p-2 rounded-full shadow-lg">
+                        <i data-lucide="zap" class="text-white w-5 h-5 fill-current"></i>
+                    </div>
                 </div>
-
-                <div class="stat-card p-10 reveal-up">
-                    <i data-lucide="expand" class="w-4 h-4 text-tartan mb-6"></i>
-                    <p class="font-montserrat text-5xl font-black mb-2">182<span class="text-tartan text-lg ml-1">cm</span></p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest en">Wingspan Index</p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest fr lang-node">Indice d'Envergure</p>
-                </div>
-
-                <div class="stat-card p-10 reveal-up">
-                    <i data-lucide="weight" class="w-4 h-4 text-tartan mb-6"></i>
-                    <p class="font-montserrat text-5xl font-black mb-2">≈60<span class="text-tartan text-lg ml-1">kg</span></p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest en">Body Mass</p>
-                    <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest fr lang-node">Masse Corporelle</p>
-                </div>
-
-                <div class="stat-card p-10 reveal-up">
-                    <i data-lucide="zap" class="w-4 h-4 text-tartan mb-6"></i>
-                    <p class="font-montserrat text-5xl font-black mb-1">37<span class="text-tartan text-lg ml-1">km/h</span></p>
-                    <div class="mt-2">
-                        <p class="text-[8px] text-tartan uppercase font-bold tracking-tighter opacity-70 en">High-speed fly-in tracking</p>
-                        <p class="text-[8px] text-tartan uppercase font-bold tracking-tighter opacity-70 fr lang-node">Mesuré par radar fly-in</p>
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 uppercase italic">Ryan F. Morais</h1>
+                    <p class="text-[#757575] font-medium tracking-[0.15em] text-sm mb-4 uppercase">Sprinter U18 | Licence FFA en cours</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="px-4 py-1.5 bg-[#F8F9FA] border border-[#E0E0E0] rounded-full text-[10px] font-bold tracking-wider uppercase text-[#424242]">Spécialiste Sprint</span>
+                        <span class="px-4 py-1.5 bg-[#F8F9FA] border border-[#E0E0E0] rounded-full text-[10px] font-bold tracking-wider uppercase text-[#424242]">Espoir Élite</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ROADMAP (Remise en place) -->
-    <section id="roadmap" class="py-32 bg-darkgrey overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="font-montserrat text-4xl font-black uppercase mb-24 text-center reveal-up">2026 <span class="text-tartan">Roadmap</span></h2>
-            
-            <div class="relative">
-                <div class="roadmap-line"></div>
-                <div class="space-y-24 relative">
-                    <div class="flex gap-10 reveal-up">
-                        <div class="relative z-10 w-6 h-6 rounded-full bg-tartan flex-shrink-0 mt-1 shadow-[0_0_15px_rgba(212,0,0,0.5)]"></div>
-                        <div>
-                            <span class="text-[10px] font-black text-tartan uppercase tracking-widest mb-2 block">Phase 01_Technical</span>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 en">Explosive Mastery</h3>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 fr lang-node">Maîtrise Explosive</h3>
-                            <p class="text-sm text-gray-400 leading-relaxed en">Optimization of starting block drive and biomechanics with Coach Alain Wagner.</p>
-                            <p class="text-sm text-gray-400 leading-relaxed fr lang-node">Optimisation de l'impulsion en starting-block et de la biomécanique avec Alain Wagner.</p>
-                        </div>
+            <!-- BLOC B: CLUB (4 cols) -->
+            <div class="md:col-span-4 bento-card p-8 flex flex-col items-center justify-center text-center">
+                <div class="mb-4 w-20 h-20 bg-white border border-[#F0F0F0] rounded-xl shadow-sm flex items-center justify-center p-2">
+                    <div class="text-center">
+                        <div class="accent-blue font-black leading-none text-xl tracking-tighter uppercase">ESRCAC</div>
+                        <div class="accent-red font-bold text-[8px] tracking-[0.3em] uppercase">Colmar</div>
                     </div>
-
-                    <div class="flex gap-10 reveal-up">
-                        <div class="relative z-10 w-6 h-6 rounded-full bg-white flex-shrink-0 mt-1"></div>
-                        <div>
-                            <span class="text-[10px] font-black text-white/50 uppercase tracking-widest mb-2 block">Phase 02_Performance</span>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 en">Sub-12.00 Barrier</h3>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 fr lang-node">Barrière des 12.00s</h3>
-                            <p class="text-sm text-gray-400 leading-relaxed en">Targeting a sub-12.00s official 100m sprint through constant mechanical refinement.</p>
-                            <p class="text-sm text-gray-400 leading-relaxed fr lang-node">Objectif sous les 12.00s sur 100m grâce à un affinement mécanique constant.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-10 reveal-up">
-                        <div class="relative z-10 w-6 h-6 rounded-full bg-tartan flex-shrink-0 mt-1"></div>
-                        <div>
-                            <span class="text-[10px] font-black text-tartan uppercase tracking-widest mb-2 block">Phase 03_Competition</span>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 en">Regional Ranking</h3>
-                            <h3 class="font-montserrat text-xl font-black uppercase mb-3 fr lang-node">Classement Régional</h3>
-                            <p class="text-sm text-gray-400 leading-relaxed en">Securing qualification for Regional U18 Championships and aiming for national standards.</p>
-                            <p class="text-sm text-gray-400 leading-relaxed fr lang-node">Obtention d'une place qualificative pour les Championnats Régionaux U18 et visée des minima nationaux.</p>
-                        </div>
-                    </div>
+                </div>
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] mb-2 uppercase">Club Affilié</h3>
+                <p class="text-sm font-semibold mb-1">ESRCAC COLMAR</p>
+                <div class="flex items-center gap-1 text-[#757575]">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                    <span class="text-xs">Colmar, Grand Est, France</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- RECORDS -->
-    <section id="records" class="py-32 bg-black border-t border-linegrey">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="font-montserrat text-3xl font-black uppercase mb-16 text-center reveal-up">Track <span class="text-tartan">Records</span></h2>
-            
-            <div class="border border-linegrey reveal-up overflow-hidden rounded-sm">
-                <!-- Header -->
-                <div class="record-table-header bg-darkgrey/50">
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 en">Distance</div>
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 fr lang-node">Épreuve</div>
-                    
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 en">Official PB</div>
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 fr lang-node">Record Off.</div>
-                    
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 en">Season Best</div>
-                    <div class="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 fr lang-node">M. Saison</div>
+            <!-- BLOC C: VITESSE (3 cols) -->
+            <div class="md:col-span-4 lg:col-span-3 bento-card p-8 relative overflow-hidden group">
+                <i data-lucide="activity" class="absolute top-4 right-4 text-blue-500 opacity-10 group-hover:opacity-20 transition-opacity w-20 h-20"></i>
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Vitesse de Pointe</h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-7xl font-black accent-blue">37</span>
+                    <span class="text-xl font-bold uppercase">km/h</span>
                 </div>
-
-                <!-- Body -->
-                <div class="font-montserrat font-black text-xl md:text-2xl tracking-tighter">
-                    <div class="record-table-row">
-                        <div>60M</div>
-                        <div class="text-gray-800">--.--S</div>
-                        <div class="text-tartan">--.--S</div>
-                    </div>
-                    <div class="record-table-row">
-                        <div>100M</div>
-                        <div class="text-gray-800">--.--S</div>
-                        <div class="text-tartan">--.--S</div>
-                    </div>
-                    <div class="record-table-row border-none">
-                        <div>200M</div>
-                        <div class="text-gray-800">--.--S</div>
-                        <div class="text-tartan">--.--S</div>
-                    </div>
-                </div>
+                <p class="text-[11px] text-[#757575] mt-4 font-medium italic">Données GPS haute précision vérifiées en séance.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer id="contact" class="py-32 bg-black border-t border-linegrey">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-24">
-            
-            <div class="reveal-up">
-                <p class="text-[9px] font-black text-tartan uppercase tracking-[0.4em] mb-4 en">Inquiries for Sponsorship & Technical Partnership</p>
-                <p class="text-[9px] font-black text-tartan uppercase tracking-[0.4em] mb-4 fr lang-node">Sponsorship & Partenariats Techniques</p>
-                <h2 class="font-montserrat text-4xl font-black uppercase mb-12">Connect <br/><span class="text-tartan">Directly</span></h2>
-                
+            <!-- BLOC D: PHYSIQUE (3 cols) -->
+            <div class="md:col-span-4 lg:col-span-3 bento-card p-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Métriques Corporelles</h3>
                 <div class="space-y-6">
-                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-6 group">
-                        <div class="icon-box w-12 h-12 border border-linegrey group-hover:border-tartan transition-all">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="maximize-2" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Taille</span>
                         </div>
-                        <span class="text-sm font-bold font-montserrat">contact.rfmoraes@gmail.com</span>
-                    </a>
-                    <a href="https://instagram.com/ryan.frm_sprint" target="_blank" class="flex items-center gap-6 group">
-                        <div class="icon-box w-12 h-12 border border-linegrey group-hover:border-tartan transition-all">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        <span class="text-sm font-bold">178 cm</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="weight" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Poids</span>
                         </div>
-                        <span class="text-sm font-bold font-montserrat">@ryan.frm_sprint</span>
-                    </a>
+                        <span class="text-sm font-bold">≈60 kg</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="ruler" class="w-4 h-4 text-[#757575]"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#757575]">Envergure</span>
+                        </div>
+                        <span class="text-sm font-bold">184 cm</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex flex-col justify-between items-end text-right reveal-up">
-                <div class="flex items-center gap-6">
-                    <div class="text-right">
-                        <p class="text-[10px] font-black uppercase tracking-[0.4em] mb-1 text-white">Club Affiliation</p>
-                        <p class="text-xl font-black uppercase tracking-tight">ESRCAC Colmar</p>
-                        <p class="text-[9px] text-tartan uppercase font-bold mt-1 en">Coach: Alain Wagner</p>
-                        <p class="text-[9px] text-tartan uppercase font-bold mt-1 fr lang-node">Entraîneur : Alain Wagner</p>
-                    </div>
-                    <div class="w-16 h-16 border-2 border-white flex items-center justify-center font-black text-3xl italic">R</div>
-                </div>
-                
-                <div class="mt-24 opacity-40">
-                    <p class="text-[8px] text-gray-500 uppercase tracking-[0.6em] font-mono">
-                        LABAROCHE, FR | SYSTEM_V.2.9
+            <!-- BLOC E: FONDATIONS (6 cols) -->
+            <div class="md:col-span-8 lg:col-span-6 bento-card p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-6">Préparation Athlétique</h3>
+                    <p class="text-lg md:text-xl font-medium leading-relaxed">
+                        Construit sur <span class="accent-blue font-bold">8+ mois</span> de <span class="italic">Street Workout</span> intensif & Force Explosive.
                     </p>
                 </div>
+                <div class="flex gap-4 mt-6">
+                    <div class="p-3 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0]">
+                        <i data-lucide="dumbbell" class="text-[#424242] w-6 h-6"></i>
+                    </div>
+                    <div class="p-3 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0]">
+                        <i data-lucide="flame" class="text-[#424242] w-6 h-6"></i>
+                    </div>
+                </div>
             </div>
+
+            <!-- BLOC F: ROADMAP (8 cols) -->
+            <div class="md:col-span-8 lg:col-span-8 bento-card p-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Roadmap Saison 2026</h3>
+                <div class="relative pl-8 border-l border-[#E0E0E0] space-y-12">
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[10px] h-[10px] rounded-full bg-accent-blue ring-4 ring-blue-50"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1">Phase 1 : Maîtrise Technique</h4>
+                        <p class="text-sm text-[#757575]">Optimisation des départs en blocks avec Alain Wagner.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[10px] h-[10px] rounded-full bg-accent-red ring-4 ring-red-50"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1">Phase 2 : Seuil de Performance</h4>
+                        <p class="text-sm text-[#757575]">Objectif : Passer sous les 12.00s au 100m.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-[10px] h-[10px] rounded-full bg-gray-300"></div>
+                        <h4 class="text-sm font-black uppercase tracking-widest mb-1 text-gray-400">Phase 3 : Ranking Régional</h4>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest italic">Qualification Championnats U18 2026/2027.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC G: VIDÉO (4 cols) -->
+            <div class="md:col-span-4 bg-[#212121] rounded-[2rem] overflow-hidden relative group">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                <!-- Image de fond simulée -->
+                <div class="absolute inset-0 bg-gray-800 opacity-60 group-hover:scale-105 transition-transform duration-700 bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=1000&auto=format&fit=crop');"></div>
+                
+                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform cursor-pointer">
+                        <i data-lucide="play" class="text-white fill-current ml-1 w-6 h-6"></i>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 left-0 p-8 z-20">
+                    <h3 class="text-[10px] font-bold tracking-[0.2em] text-white/70 uppercase mb-2">Analyse Vidéo</h3>
+                    <p class="text-white font-bold text-sm italic italic">Départ en blocks (Slow-Mo)</p>
+                </div>
+            </div>
+
+            <!-- BLOC H: TRACK DATA (8 cols) -->
+            <div class="md:col-span-8 bento-card p-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Records Personnels Officiels</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">60M</span>
+                        <span class="text-2xl font-black">--.--s</span>
+                    </div>
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">100M</span>
+                        <span class="text-2xl font-black">--.--s</span>
+                    </div>
+                    <div class="p-6 bg-[#F8F9FA] rounded-2xl border border-[#F0F0F0] text-center">
+                        <span class="text-[10px] font-black tracking-widest text-[#757575] uppercase mb-2 block">200M</span>
+                        <span class="text-2xl font-black">--.--s</span>
+                    </div>
+                </div>
+                <div class="mt-8 flex items-center gap-2 text-[#757575] border-t border-[#F0F0F0] pt-6">
+                    <i data-lucide="target" class="w-4 h-4 accent-blue"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-widest italic uppercase">Données 2026 en attente de validation FFA</p>
+                </div>
+            </div>
+
+            <!-- BLOC I: CONTACT (4 cols) -->
+            <div class="md:col-span-4 bento-card p-8 flex flex-col justify-between">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-[#757575] uppercase mb-8">Contact Professionnel</h3>
+                <div class="space-y-4 mb-8">
+                    <a href="mailto:contact.rfmoraes@gmail.com" class="flex items-center gap-3 group">
+                        <div class="p-2 bg-blue-50 rounded-lg group-hover:bg-accent-blue transition-colors">
+                            <i data-lucide="mail" class="w-4 h-4 accent-blue group-hover:text-white"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-[#424242] group-hover:accent-blue overflow-hidden text-ellipsis">contact.rfmoraes@gmail.com</span>
+                    </a>
+                    <a href="https://instagram.com/ryan.frm_sprint" target="_blank" class="flex items-center gap-3 group">
+                        <div class="p-2 bg-red-50 rounded-lg group-hover:bg-accent-red transition-colors">
+                            <i data-lucide="instagram" class="w-4 h-4 accent-red group-hover:text-white"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-[#424242] group-hover:accent-red">@ryan.frm_sprint</span>
+                    </a>
+                </div>
+                <button onclick="window.print()" class="w-full py-4 bg-[#212121] text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-colors font-bold text-xs tracking-widest uppercase shadow-lg shadow-gray-200">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    Télécharger CV Complet
+                </button>
+            </div>
+
         </div>
-    </footer>
+
+        <!-- FOOTER -->
+        <footer class="mt-12 text-center pb-8">
+            <p class="text-[10px] font-bold tracking-[0.4em] text-[#BDBDBD] uppercase italic leading-loose">
+                Performance Sprint — Design for Velocity — Ryan F. Morais © 2026
+            </p>
+        </footer>
+    </div>
 
     <script>
-        function initIcons() {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
 
-        let currentLang = 'en';
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'fr' : 'en';
-            document.querySelectorAll('.en').forEach(el => { el.classList.toggle('lang-node', currentLang !== 'en'); el.classList.toggle('lang-active', currentLang === 'en'); });
-            document.querySelectorAll('.fr').forEach(el => { el.classList.toggle('lang-node', currentLang !== 'fr'); el.classList.toggle('lang-active', currentLang === 'fr'); });
-            document.getElementById('lang-label').innerText = currentLang === 'en' ? 'FR' : 'EN';
-            initIcons();
-        }
-
-        gsap.registerPlugin(ScrollTrigger);
-        window.onload = () => {
-            initIcons();
-            gsap.to(".reveal-up", { duration: 1, y: 0, opacity: 1, stagger: 0.1, ease: "power4.out" });
-            document.querySelectorAll(".reveal-up").forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
-                    duration: 1, y: 0, opacity: 1, ease: "power3.out"
-                });
-            });
-        };
+        // Animation d'entrée au défilement (optionnel)
+        document.querySelectorAll('.bento-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
     </script>
 </body>
 </html>
