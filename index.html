@@ -338,6 +338,20 @@
             }
         }
 
+        // Animation du compteur de vitesse
+        const speedElement = document.querySelector('.text-7xl'); // Cible ton 37.1
+        let targetSpeed = 37.1;
+        let currentSpeed = 0;
+
+        const interval = setInterval(() => {
+            if (currentSpeed >= targetSpeed) {
+                clearInterval(interval);
+            } else {
+                currentSpeed += 0.5;
+                speedElement.innerText = currentSpeed.toFixed(1);
+            }
+        }, 20);
+        
         // Animation d'entrée au défilement
         document.querySelectorAll('.bento-card, [class*="bg-[#212121]"]').forEach((card, index) => {
             card.style.opacity = '0';
